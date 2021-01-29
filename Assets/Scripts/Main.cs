@@ -16,13 +16,13 @@ public class Main : MonoBehaviour
     public GameObject myPrefab;
     public Transform letterInPos;
     public Transform letterOutPos;
-    public Transform targetLetterPosition;
+    public Transform targetLetterSelect;
     public StackClickController stackController;
     public Mailbox[] mailboxes;
     public Transform activeLetterParent;
 
     private Stack<Envelope> envelopStack = new Stack<Envelope>();
-    private Envelope currentEnvelope;
+    private Envelope currentStackEnvelope;
 
     public Timer timer;
 
@@ -73,7 +73,7 @@ public class Main : MonoBehaviour
         // TODO: Remove highlight from stack envelops
         letterCount++;
         Vector3 heightAddition = new Vector3(0, 0, -letterCount * 0.01f);
-        GameObject newLetter = (GameObject)Instantiate(myPrefab, letterInPos.position+heightAddition, Quaternion.identity);
+        GameObject newLetter = Instantiate(myPrefab, letterInPos.position+heightAddition, Quaternion.identity);
         Envelope envelope = newLetter.GetComponent<Envelope>();
         envelope.transform.SetParent(stackController.transform);
         envelopStack.Push(envelope);
@@ -84,7 +84,8 @@ public class Main : MonoBehaviour
         newLetter.transform
             .DOMove(letterOutPos.transform.position + offset, config.letterEnterAnimationDuration);
         newLetter.transform.eulerAngles = new Vector3( 0, 0,Random.Range(-90, 90));
-        newLetter.transform.DORotate(new Vector3( 0, 0,Random.Range(-config.letterRotationOffset, config.letterRotationOffset)), config.letterEnterAnimationDuration);
+        newLetter.transform.DORotate(new Vector3( 0, 0,
+            Random.Range(-config.letterRotationOffset, config.letterRotationOffset)), config.letterEnterAnimationDuration);
     }
 
     private void DOOnStackMouseEnter()
@@ -113,10 +114,15 @@ public class Main : MonoBehaviour
 
     private void OpenANewLetter()
     {
-        currentEnvelope = envelopStack.Pop();
-        currentEnvelope.transform.SetParent(activeLetterParent);
-        currentEnvelope.transform.DORotate(new Vector3(0, 0, 0), config.letterUseAnimationDuration);
-        currentEnvelope.transform.DOMove(targetLetterPosition.transform.position, config.letterUseAnimationDuration);
+        currentStackEnvelope = envelopStack.Pop();
+        currentStackEnvelope.transform.SetParent(activeLetterParent);
+        var sequence = DOTween.Sequence();
+        sequence.Append(currentStackEnvelope.transform.DOMove(targetLetterSelect.transform.position, config.letterSelectedAnimationDuration));
+        sequence.onComplete = () =>
+        {
+            Destroy(currentStackEnvelope);
+            currentStackEnvelope = null;
+        };
         SetMailboxesInteractive();
     }
 
@@ -141,7 +147,7 @@ public class Main : MonoBehaviour
     private void OnMailboxOnMouseClicked(Mailbox mailbox)
     {
         Debug.Log("OnMailboxOnMouseClicked");
-        if (currentEnvelope == null)
+        if (currentStackEnvelope == null)
         {
             return;
         }
@@ -149,11 +155,11 @@ public class Main : MonoBehaviour
         // TODO: Add animation
         // Send envelop to mailbox
         var sequence = DOTween.Sequence();
-        sequence.Append(currentEnvelope.transform.DOMove(mailbox.targetEnvelopFront.position, 
+        sequence.Append(currentStackEnvelope.transform.DOMove(mailbox.targetEnvelopFront.position, 
             config.envelopMoveFrontMailboxAnimationDuration));
         sequence.Insert(0, 
-            currentEnvelope.transform.DOScale(0.5f, config.envelopMoveFrontMailboxAnimationDuration));
-        sequence.Append(currentEnvelope.transform.DOMove(mailbox.targetEnvelopInside.position,
+            currentStackEnvelope.transform.DOScale(0.5f, config.envelopMoveFrontMailboxAnimationDuration));
+        sequence.Append(currentStackEnvelope.transform.DOMove(mailbox.targetEnvelopInside.position,
             config.envelopMoveInsideMailboxAnimationDuration).SetEase(Ease.InBack));
         sequence.onComplete = OnMailboxInsertComplete;
     }
@@ -162,7 +168,6 @@ public class Main : MonoBehaviour
     {
         Debug.Log("OnMailboxInsertComplete");
         // TODO: Distribute points or whatever 
-        currentEnvelope = null;
         SetStackInteractive();
     }
 }

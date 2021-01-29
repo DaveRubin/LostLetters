@@ -70,6 +70,7 @@
      <Compile Include="Assets\Scripts\Main.cs" />
      <Compile Include="Assets\Scripts\Models\GameConfigurations.cs" />
      <Compile Include="Assets\Scripts\Models\LetterModel.cs" />
+     <Compile Include="Assets\Scripts\OpenLetter.cs" />
      <Compile Include="Assets\Scripts\StackClickController.cs" />
      <Compile Include="Assets\Scripts\Timer.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
