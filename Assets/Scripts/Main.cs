@@ -120,7 +120,7 @@ public class Main : MonoBehaviour
         sequence.Append(currentStackEnvelope.transform.DOMove(targetLetterSelect.transform.position, config.letterSelectedAnimationDuration));
         sequence.onComplete = () =>
         {
-            Destroy(currentStackEnvelope);
+            Destroy(currentStackEnvelope.gameObject);
             currentStackEnvelope = null;
         };
         SetMailboxesInteractive();
