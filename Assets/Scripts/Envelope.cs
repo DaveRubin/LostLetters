@@ -8,6 +8,7 @@ public class Envelope : MonoBehaviour
     public Action<string> clicked;
 
     public string letterName = "";
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,7 +22,8 @@ public class Envelope : MonoBehaviour
         
     }
     //
-    void OnMouseDown () {
-        clicked(letterName);
+    void OnMouseDown ()
+    {
+        clicked?.Invoke(letterName);
     }
 }
