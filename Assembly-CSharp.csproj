@@ -67,7 +67,9 @@
      <Compile Include="Assets\Demigiant\DOTween\Modules\DOTweenModuleUtils.cs" />
      <Compile Include="Assets\Scripts\Envelope.cs" />
      <Compile Include="Assets\Scripts\Main.cs" />
+     <Compile Include="Assets\Scripts\OpenLetter.cs" />
      <Compile Include="Assets\Scripts\Timer.cs" />
+     <None Include="Assets\Resources\OneSideShader.shader" />
      <None Include="Assets\Demigiant\DOTween\readme.txt" />
  <Reference Include="Unity.Timeline.Editor">
  <HintPath>/Users/davidrubin/Projects/Games/LostLetters/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>

@@ -46,7 +46,7 @@ public class Main : MonoBehaviour
         envelope.letterName = String.Format("{0}#{1}", "Letter", letterCount);
         
         Vector3 offset = new Vector3(Random.Range(-letterPositionOffset, letterPositionOffset),
-            Random.Range(-letterPositionOffset, letterPositionOffset))+ heightAddition;
+            Random.Range(-letterPositionOffset, letterPositionOffset)) + heightAddition;
         newLetter.transform
             .DOMove(letterOutPos.transform.position + offset, letterAnimationDuration);
         newLetter.transform.eulerAngles = new Vector3( 0, 0,Random.Range(-90, 90));
