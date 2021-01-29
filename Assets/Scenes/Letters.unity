@@ -214,12 +214,12 @@ GameObject:
   - component: {fileID: 429919459}
   - component: {fileID: 429919460}
   m_Layer: 0
-  m_Name: PaperBak
+  m_Name: PaperBack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &429919459
 Transform:
   m_ObjectHideFlags: 0
@@ -228,7 +228,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 429919458}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0, z: 0.0001}
+  m_LocalPosition: {x: 0, y: -0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2140164705}
@@ -537,8 +537,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1554272361}
   - component: {fileID: 1554272362}
-  - component: {fileID: 1554272363}
   - component: {fileID: 1554272364}
+  - component: {fileID: 1554272363}
   m_Layer: 0
   m_Name: OpenLetter
   m_TagString: Untagged
@@ -589,10 +589,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1554272360}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9287852d162a42338a2efedf28a6f6d, type: 3}
+  m_Script: {fileID: 11500000, guid: 958bb03f38e64b1fb15295fa8a67ae76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  paper: {fileID: 2140164705}
+  isFlippable: 1
 --- !u!61 &1554272364
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -759,7 +759,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2140164703}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.03, y: -3.68, z: 0.9410986}
+  m_LocalPosition: {x: -0.03, y: -3.68, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 139750129}
