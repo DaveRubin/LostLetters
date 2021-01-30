@@ -30,17 +30,31 @@ public class Main : MonoBehaviour
     private OpenLetter currentLetter;
     private static string[] avaiableCharacters = new string[] { "Daniel", "Regina", "Roger"};
     private static int[] charecterPlace = new int[] { 1,1,1};
-     
+    
     void Start()
     {
         InvokeRepeating("StackNewLetter", 1, config.timePerEnvelopInSeconds);
         StartTimer();
         GetComponent<AudioSource>().loop = true;
         GetComponent<AudioSource>().Play();
+        transform.Find("Glass").GetComponent<MouseDown>().onClicked+=ToggleZoomOn;
+        transform.Find("MagnifyingGlass/Glass").GetComponent<MouseDown>().onClicked+=ToggleZoomOff;
+        
         
         SetStackInteractive();
         RegisterToMailboxes();
         RegisterToStack();
+    }
+
+    private void ToggleZoomOn()
+    {
+        transform.Find("MagnifyingGlass").gameObject.SetActive(true);
+        transform.Find("Glass").gameObject.SetActive(false);
+    }
+    private void ToggleZoomOff()
+    {
+        transform.Find("MagnifyingGlass").gameObject.SetActive(false);
+        transform.Find("Glass").gameObject.SetActive(true);
     }
 
     private void RegisterToMailboxes()
