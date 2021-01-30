@@ -7,6 +7,7 @@ public class OpenLetter : MonoBehaviour
 {
     public bool isFlippable = true;
 
+    public ECharacters rightAnswer = ECharacters.Daniel;
     private Transform paper;
     private GameObject back;
     private GameObject front;
@@ -35,5 +36,21 @@ public class OpenLetter : MonoBehaviour
                 front.SetActive(targetY == 0);
             }).SetEase(Ease.Linear);
         }
+    }
+
+    public Tween MoveLetterTo(Transform mailboxTransform)
+    {
+        float duration = 1;
+        Destroy(GetComponent<Animator>());
+        paper.SetParent(mailboxTransform.parent.parent.parent);
+        Debug.Log(mailboxTransform.position);
+        Debug.Log(paper.position);
+        paper.DOScale(Vector3.zero, duration).OnComplete(() =>
+        {
+            Destroy(paper.gameObject);
+            Destroy(gameObject);
+        });
+        transform.DOLocalMove(new Vector3(0, -10, 0), duration);
+        return paper.DOMove(mailboxTransform.position, duration);
     }
 }

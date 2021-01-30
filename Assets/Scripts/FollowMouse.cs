@@ -31,6 +31,8 @@ namespace DefaultNamespace
                 worldPos.x *= -1;
                 worldPos.y *= -1;
             }
+
+            worldPos.z = -9;
             return worldPos;
         }
     }

@@ -1,22 +1,35 @@
 using System;
 using System.Runtime.CompilerServices;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 namespace DefaultNamespace
 {
     public class Mailbox : MonoBehaviour
     {
+        public ECharacters character = ECharacters.Daniel;
         public bool isInteractive = false;
-        public Transform targetEnvelopFront;
-        public Transform targetEnvelopInside;
         public event Action mouseClicked;
-        
+        private Image sprite;
+        private static Color off = new Color(1, 1, 1, 0);
+        private static Color on = new Color(1, 1, 1, 0.5f);
+
+        private void Start()
+        {
+            sprite = GetComponent<Image>();
+            sprite.DOColor(off, 0);   
+        }
+
         public void SetInteractive(bool isInteractive)
         {
             Debug.Log($"Mailbox SetClickable {isInteractive}");
             this.isInteractive = isInteractive;
-            // TODO: if highlight, stop the highlight
+            if (!isInteractive)
+            {
+                sprite.DOColor(off, 0);   
+            }
         }
 
         public void OnMouseEnter()
@@ -26,6 +39,7 @@ namespace DefaultNamespace
             {
                 return;
             }
+            sprite.DOColor(on, 0);
         }
 
         public void OnMouseExit()
@@ -35,6 +49,7 @@ namespace DefaultNamespace
             {
                 return;
             }
+            sprite.DOColor(off, 0);
         }
 
         public void OnMouseDown()

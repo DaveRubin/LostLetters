@@ -17,6 +17,6 @@ public class Timer : MonoBehaviour
         // Debug.Log(value);
         float fillAmount = value;
         image.fillAmount = fillAmount;
-        dial.eulerAngles = new Vector3(0,0, fillAmount * -360);
+        dial.localEulerAngles = new Vector3(0,0, fillAmount * -360);
     }
 }

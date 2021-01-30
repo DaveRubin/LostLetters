@@ -309,7 +309,7 @@ GameObject:
   - component: {fileID: 8102592412206606026}
   - component: {fileID: 8102592412206606025}
   m_Layer: 0
-  m_Name: Regina2
+  m_Name: 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -373,7 +373,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 4.71, y: 4}
+  m_Size: {x: 6.6, y: 15.31}
   m_EdgeRadius: 0
 --- !u!114 &8102592412206606025
 MonoBehaviour:
@@ -388,6 +388,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFlippable: 0
+  rightAnswer: 1
 --- !u!1 &8102592412301133538
 GameObject:
   m_ObjectHideFlags: 0

@@ -451,7 +451,7 @@ GameObject:
   - component: {fileID: 8402385953533893446}
   - component: {fileID: 8402385953533893447}
   m_Layer: 0
-  m_Name: DanielHorton5
+  m_Name: 5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -515,7 +515,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 4.71, y: 4}
+  m_Size: {x: 6.6, y: 15.31}
   m_EdgeRadius: 0
 --- !u!114 &8402385953533893447
 MonoBehaviour:
@@ -530,6 +530,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFlippable: 0
+  rightAnswer: 0
 --- !u!1 &8402385953628775644
 GameObject:
   m_ObjectHideFlags: 0

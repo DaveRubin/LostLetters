@@ -7,7 +7,7 @@ namespace Models
     public class GameConfigurations
     {
         public float letterEnterAnimationDuration = 2;
-        [FormerlySerializedAs("letterUseAnimationDuration")] public float letterSelectedAnimationDuration = 2;
+        public float letterSelectedAnimationDuration = 2;
         public float letterPositionOffset = 0.5f;
         public float letterRotationOffset = 10;
         public int timePerEnvelopInSeconds = 10;
