@@ -59,7 +59,7 @@ public class Main : MonoBehaviour
 
     private void UpdateCallback(float value)
     {
-        timer.UpdateTimer(1-value);
+        timer.UpdateTimer(value);
     }
 
     private void FinishGame()
